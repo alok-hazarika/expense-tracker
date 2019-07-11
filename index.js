@@ -175,7 +175,7 @@ app.post('/users/set-budget', function(req, res) {
         "date": new Date()
         }
     console.log("This is the budget " + budget);
-    db.collection('budgetDetails').insert(budget, function(err, budget){
+    db.collection('budgetDetails').insertOne(budget, function(err, budget){
         if(err) throw err
         else{
             console.log(JSON.stringify(budget) + " was added by " + req.session.username);
