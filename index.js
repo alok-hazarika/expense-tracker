@@ -31,12 +31,19 @@ app.set('view engine', 'hbs');
 
 
 //Connecting Mongo
+//paste that code
+// open terminal
+var url;
+if (process.env.MY_DB)
+   url = process.env.MY_DB
+else
+   url = 'mongodb://127.0.0.1:27017'
+   console.log (url);
 var mongoClient = require('mongodb').MongoClient;
-mongoClient.connect('mongodb://127.0.0.1:27017', {useNewUrlParser: true}, function(err, client) {
-    if(err) throw err;
-    db = client.db('project_CodeFiner') //Our DB : "project_CodeFiner"
+mongoClient.connect(url, {useNewUrlParser: true}, function(err, client) {
+   if(err) throw err;
+   db = client.db('project_CodeFiner') //Our DB : "project_CodeFiner"
 })
-
 
 // Initialise the routes
 // app.use('', home);
